@@ -187,53 +187,69 @@ const Test = (props) => {
           <p> 공용 ID: <b style={{color:"red"}}>{props.name} </b>, 비밀번호 : <b style={{color:"red"}}>{props.password}</b></p>
           </div>
 
-          {(logInfo ==="" || logInfo === "로그아웃")   &&<div className={styles.row}>
-          <span style={{ color: "red" }}>●</span>
-          <label>사용자 이름 : </label>
-          <input className={styles.textbox2} name="name" placeholder="이름" onChange={onChange} value={name} />
-          </div>}
+          {(logInfo ==="" || logInfo === "로그아웃")   &&
+          <div>
+            <div className={styles.row}>
+            <span style={{ color: "red" }}>●</span>
+            <label>사용자 이름 : </label>
+            <input className={styles.textbox2} name="name" placeholder="이름" onChange={onChange} value={name} />
+            </div>
 
-          {(logInfo ==="" || logInfo === "로그아웃")   &&<div className={styles.row}>
-          <span style={{ color: "red" }}>●</span>
-          <label>사용자 닉네임 : </label>
-          <input className={styles.textbox2} name="nickname" placeholder="닉네임" onChange={onChange} value={nickname} />
-          </div>}
-    
-          {(logInfo ==="" || logInfo === "로그아웃")   &&<div className={styles.row}>
-          <span style={{ color: "red" }}>●</span>
-          <label>사용자 ID : </label>
-          <input className={styles.textbox2} name="id" placeholder="아이디" onChange={onChange} value={id} />
-          </div>}
+            <div className={styles.row}>
+            <span style={{ color: "red" }}>●</span>
+            <label>사용자 닉네임 : </label>
+            <input className={styles.textbox2} name="nickname" placeholder="닉네임" onChange={onChange} value={nickname} />
+            </div>
 
-          {(logInfo ==="" || logInfo === "로그아웃")   && <div className={styles.row}>
-          <span style={{ color: "red" }}>●</span>
-          <label>비밀번호 : </label>
-          <input  type={passwordType.type} className={styles.textbox2} name="password" placeholder="패스워드" onChange={onChange} value={password}/>
-          </div>}
+            <div className={styles.row}>
+            <span style={{ color: "red" }}>●</span>
+            <label>사용자 ID : </label>
+            <input className={styles.textbox2} name="id" placeholder="아이디" onChange={onChange} value={id} />
+            </div>
 
-          {(logInfo ==="" || logInfo === "로그아웃")   && <div className={styles.row}>
-          <input type="checkbox" value="체크" placeholder="dd" onClick ={ handlePasswordType }/>
-          비밀번호 표시
-          </div>}
+            <div className={styles.row}>
+            <span style={{ color: "red" }}>●</span>
+            <label>비밀번호 : </label>
+            <input  type={passwordType.type} className={styles.textbox2} name="password" placeholder="패스워드" onChange={onChange} value={password}/>
+            </div>
 
-          {(logInfo ==="" || logInfo === "로그아웃")  && <div className={styles.row}>
-          <button 
+            <div className={styles.row}>
+            <input type="checkbox" value="체크" placeholder="dd" onClick ={ handlePasswordType }/>
+            비밀번호 표시
+            </div>
+
+            <div className={styles.row}>
+            <button 
             className={styles.button}
             onClick={onLogin} >
             로그인
-          </button> <button className={styles.button} onClick={onReset}>초기화</button>
-          </div>}
+            </button> <button className={styles.button} onClick={onReset}>초기화</button>
+            </div>
 
-          
-       
+          </div>
+          }
 
-          {logInfo ==="로그인" && <div className={styles.row}>
-          <button 
-            className={styles.button} 
-            onClick={onLogout}>
-            로그아웃
-          </button>
-          </div>}
+          {logInfo ==="로그인" && 
+            <div>
+              <div className={styles.row}>
+              <button 
+                className={styles.button} 
+                onClick={onLogout}>
+                로그아웃
+              </button>
+              </div>
+
+              <div className={styles.row}>
+              <Timer mm={t_minutes} ss={t_seconds} onLogout={onLogout} setTimer={setTimer123}/><br/>
+              </div>
+
+               {/* 메인프레임 */}
+              <div className={styles.row}>
+              <MainFrame param={propsData} onLogout={onLogout} />
+              </div>
+
+            </div>
+          }
 
           {/* <div className={styles.row}>
           <button 
@@ -241,18 +257,7 @@ const Test = (props) => {
             onClick={insertParam}>객체에서 배열 변경 
           </button>
           </div> */}
-          
-          {logInfo ==="로그인" && <div className={styles.row}>
-          <Timer mm={t_minutes} ss={t_seconds} onLogout={onLogout} setTimer={setTimer123}/><br/>
-          </div>}
-
-          {/* 메인프레임 */}
-          <div className={styles.row}>
-            { logInfo === '로그인' &&
-            <MainFrame param={propsData} onLogout={onLogout} />}
-          </div>
         </div>
- 
       );
 };
 
