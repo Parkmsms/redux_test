@@ -2,6 +2,7 @@ import counterReducer, {
   increment,
   decrement,
   incrementByAmount,
+  decrementByAmount
 } from './counterSlice';
 
 describe('counter reducer', () => {
@@ -22,6 +23,11 @@ describe('counter reducer', () => {
   });
 
   it('should handle decrement', () => {
+    const actual = counterReducer(initialState, decrementByAmount());
+    expect(actual.value).toEqual(2);
+  });
+
+  it('should handle decrementByAmount', () => {
     const actual = counterReducer(initialState, decrement());
     expect(actual.value).toEqual(2);
   });
